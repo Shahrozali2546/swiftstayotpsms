@@ -186,12 +186,14 @@ countries = {
     "United States (+1)": "+1"
 }
 
-# Country selection dropdown
-country_name = st.selectbox("🌍 Select Country", list(countries.keys()))
-country_code = countries[country_name]
+# Country and Phone Input in One Row
+col1, col2 = st.columns([1.5, 2.5])
+with col1:
+    country_name = st.selectbox("🌍 Country", list(countries.keys()))
+    country_code = countries[country_name]
 
-# Phone number input (without country code)
-phone_number = st.text_input("📞 Enter Phone Number", placeholder="1234567890")
+with col2:
+    phone_number = st.text_input("📞 Phone Number", placeholder="1234567890")
 
 # Button to Generate OTP
 if st.button("🚀 Generate OTP"):
