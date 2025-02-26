@@ -146,6 +146,8 @@
 #         st.error("❌ Please enter a valid phone number!")
 
 
+
+
 import time
 import streamlit as st
 import random
@@ -157,7 +159,7 @@ def generate_otp():
 # Streamlit UI
 st.title("📩 SWIFTSTAY SMS OTP Generator")
 
-# Country Code Selection (Predefined)
+# Country Code Selection
 countries = {
     "Afghanistan (+93)": "+93",
     "Albania (+355)": "+355",
@@ -184,11 +186,11 @@ countries = {
     "United States (+1)": "+1"
 }
 
-# Default Country Code (Change this if needed)
-default_country = "Pakistan (+92)"  # Default country
-country_code = countries[default_country]  # Get country code from dictionary
+# Country selection dropdown
+country_name = st.selectbox("🌍 Select Country", list(countries.keys()))
+country_code = countries[country_name]
 
-# Phone Number Input
+# Phone number input (without country code)
 phone_number = st.text_input("📞 Enter Phone Number", placeholder="1234567890")
 
 # Button to Generate OTP
