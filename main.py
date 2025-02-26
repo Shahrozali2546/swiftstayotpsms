@@ -3,8 +3,8 @@ import pandas as pd
 from twilio.rest import Client
 import random
 
-TWILIO_SID = ""
-TWILIO_AUTH_TOKEN = ""
+TWILIO_SID = "ACa69cccc8ce83d59b0abad27f15e63481"
+TWILIO_AUTH_TOKEN = "92b96d5c931e745fe6ec367d62e7d204"
 TWILIO_PHONE = "SWIFTSTAY"
 
 
