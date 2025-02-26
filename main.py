@@ -157,17 +157,47 @@ def generate_otp():
 # Streamlit UI
 st.title("📩 SWIFTSTAY SMS OTP Generator")
 
-# Phone Number Input (Only Number)
-phone_number = st.text_input("📞 Enter Phone Number", placeholder="Enter your phone number", max_chars=15)
+# Country Code Selection (Predefined)
+countries = {
+    "Afghanistan (+93)": "+93",
+    "Albania (+355)": "+355",
+    "Algeria (+213)": "+213",
+    "Argentina (+54)": "+54",
+    "Australia (+61)": "+61",
+    "Brazil (+55)": "+55",
+    "Canada (+1)": "+1",
+    "China (+86)": "+86",
+    "France (+33)": "+33",
+    "Germany (+49)": "+49",
+    "India (+91)": "+91",
+    "Indonesia (+62)": "+62",
+    "Italy (+39)": "+39",
+    "Japan (+81)": "+81",
+    "Mexico (+52)": "+52",
+    "Pakistan (+92)": "+92",
+    "Russia (+7)": "+7",
+    "Saudi Arabia (+966)": "+966",
+    "South Africa (+27)": "+27",
+    "Spain (+34)": "+34",
+    "United Arab Emirates (+971)": "+971",
+    "United Kingdom (+44)": "+44",
+    "United States (+1)": "+1"
+}
+
+# Default Country Code (Change this if needed)
+default_country = "Pakistan (+92)"  # Default country
+country_code = countries[default_country]  # Get country code from dictionary
+
+# Phone Number Input
+phone_number = st.text_input("📞 Enter Phone Number", placeholder="1234567890")
 
 # Button to Generate OTP
 if st.button("🚀 Generate OTP"):
-    if phone_number.isdigit() and len(phone_number) >= 7:  # Basic validation for number
+    if phone_number.isdigit() and len(phone_number) >= 7:  # Basic validation
         otp = generate_otp()
+        full_number = country_code + phone_number
         with st.spinner("📨 Sending OTP... Please wait"):  # Spinner animation
             time.sleep(5)
-        st.success(f"✅ SwiftStay OTP Sent Successfully to your phone number")
+        st.success(f"✅ SwiftStay OTP Sent Successfully to {full_number}")
     else:
         st.error("❌ Please enter a valid phone number!")
-
-
